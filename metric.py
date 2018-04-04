@@ -92,8 +92,11 @@ def print_flops(model, inputs, forward, multiply_adds=False):
 
     if not isinstance(inputs, Variable):
         inputs = Variable(torch.rand(inputs).unsqueeze(0), requires_grad=True)
-    # outputs = model(inputs, *args)
-    outputs = forward(model, inputs)
+
+    if forward:
+        outputs = forward(model, inputs)
+    else:
+        outputs = model(inputs)
 
     total_flops = (sum(list_conv) + sum(list_linear) + sum(list_bn) + sum(list_relu) + sum(list_pooling))
     print('  + Number of FLOPs: %.2e' % (total_flops))
