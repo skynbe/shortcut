@@ -99,7 +99,7 @@ def print_flops(model, inputs, forward, multiply_adds=False):
         outputs = model(inputs)
 
     total_flops = (sum(list_conv) + sum(list_linear) + sum(list_bn) + sum(list_relu) + sum(list_pooling))
-    print('  + Number of FLOPs: %.2e' % (total_flops))
+    print('  + Number of FLOPs: %.3e' % (total_flops))
     [hook.remove() for hook in hooks]
 
 
