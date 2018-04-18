@@ -22,7 +22,7 @@ class AvgMeter(object):
         self.avg = self.sum / self.count
 
 
-def print_flops(model, inputs, forward, multiply_adds=False):
+def print_flops(model, inputs, forward, multiply_adds=False, desc=''):
     hooks = []
     list_conv = []
     list_linear = []
@@ -99,7 +99,7 @@ def print_flops(model, inputs, forward, multiply_adds=False):
         outputs = model(inputs)
 
     total_flops = (sum(list_conv) + sum(list_linear) + sum(list_bn) + sum(list_relu) + sum(list_pooling))
-    print('  + Number of FLOPs: %.3e' % (total_flops))
+    print('  + Number of FLOPs: %.3e // %s' % (total_flops, desc))
     [hook.remove() for hook in hooks]
 
 
