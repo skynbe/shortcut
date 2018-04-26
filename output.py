@@ -10,7 +10,7 @@ def write_csv(name='output.csv', header=None, data=None):
     # if sys.version_info.major==2:
     with codecs.open(name, 'w', encoding='utf-8') as f:
         wr = csv.writer(f)
-        if header:
+        if header is not None:
             wr.writerow(header)
         wr.writerows(data)
 
