@@ -1,8 +1,11 @@
+import matplotlib
+matplotlib.use('Agg')
 import sys
 import csv
 import codecs
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 
 def write_csv(name='output.csv', header=None, data=None):
     '''
