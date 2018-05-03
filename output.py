@@ -42,7 +42,7 @@ def print_histogram(datas, labels, axis=None, hist=True, kde=False, legend=True,
     plt.title('')
     if axis:
         plt.axis(axis)
-    plt.xlabel('Accuracy(%)')
+    plt.xlabel('KL Divergence')
     plt.ylabel('Number of models')
     plt.savefig(save_dir)
 
