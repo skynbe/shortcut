@@ -58,6 +58,5 @@ if __name__ == '__main__':
         for data in row:
             if data != '':
                 floats.append(float(data))
-    print(floats)
     print_histogram([floats], ["Stochastic"], axis=[74.5, 77, 0, 80], legend=False, save_dir='../result/histogram_1.png')
 
