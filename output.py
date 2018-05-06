@@ -31,7 +31,6 @@ def read_csv(name):
 
 def print_histogram(datas, labels, axis=None, hist=True, kde=False, legend=True, save_dir='./result/histogram.png'):
     for data, label in zip(datas, labels):
-        print(data, label)
         sns.distplot(data, hist=hist, kde=kde,
                      kde_kws={'linewidth': 3},
                      label=label)
