@@ -19,7 +19,11 @@ class AvgMeter(object):
         self.val = val
         self.sum += val
         self.count += n
-        self.avg = self.sum / self.count
+        # for numpy
+        if type(self.sum)=='torch.Tensor':
+            self.avg = self.sum.item() / self.count
+        else:
+            self.avg = self.sum / self.count
 
 
 def print_flops(model, inputs, forward, multiply_adds=False, desc=''):
@@ -102,6 +106,10 @@ def print_flops(model, inputs, forward, multiply_adds=False, desc=''):
     print('  + Number of FLOPs: %.3e // %s' % (total_flops, desc))
     [hook.remove() for hook in hooks]
 
+def print_parameters(model):
+    print('Number of model parameters: %.3e' % (sum([p.data.nelement() for p in model.parameters()])))
 
+    
+    
 if __name__ == '__main__':
     print_flops(models.resnet50(), inputs=(3, 224, 224))
